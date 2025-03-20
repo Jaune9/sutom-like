@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>Form</h1>
-    <form action="#" th:action="@{/catfact}" th:object="${catfact}" method="post">
+    <form action="#" th:action="@{/cat_fact}" th:object="${catfact}" method="post">
     	<p>Id: <input type="text" th:field="*{id}" /></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
