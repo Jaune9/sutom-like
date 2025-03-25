@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>A word, please!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Word</h1>
+    <form action="#" th:action="@{/word}" th:object="${Word}" method="post">
+    	<p>Word: <input type="text" th:field="*{word}" /></p>
+    </form>
+</body>
+</html>
