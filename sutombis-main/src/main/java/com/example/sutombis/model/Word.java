@@ -2,7 +2,8 @@ package com.example.sutombis.model;
 
 public class Word {
     private long id;
-    private String word;
+    private String name;
+    private String categorie;
 
   public long getId() {
     return id;
@@ -12,12 +13,19 @@ public class Word {
     this.id = id;
   }
 
-  public String getWord() {
-    return word;
+  public String getName() {
+    return name;
   }
 
-  public void setWord(String word) {
-    this.word = word;
+  public void setName(String name) {
+    this.name = name;
   }
 
+  public String getCategorie() {
+    return categorie;
+  }
+
+  public void setCategorie(String categorie) {
+    this.categorie = categorie;
+  }
 }
