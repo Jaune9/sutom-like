@@ -19,7 +19,13 @@ public class ConnectApiController {
         
         Word response = restTemplate.getForObject(url + "/daily", Word.class);
         
-        return response.getName();
+
+        String daily_word = response.getName();
+        response.blurWord(daily_word);
+        int length = daily_word.length();
+        String hidden_daily_word = String.format("%-" + length + "s", daily_word.charAt(0)).replace(' ', '_');
+
+        return hidden_daily_word;
     }
 
 }
