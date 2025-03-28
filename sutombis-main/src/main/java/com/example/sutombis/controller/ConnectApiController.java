@@ -1,15 +1,15 @@
 package com.example.sutombis.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.sutombis.model.Word;
 
-@RestController
+@Controller
 public class ConnectApiController {
 
     @SuppressWarnings("null")
@@ -20,10 +20,10 @@ public class ConnectApiController {
 
         Word response = restTemplate.getForObject(url + "/daily", Word.class);
 
-        String daily_word = response.getName();
-        response.setWordToFind(daily_word);
+        response.setWordToFind(response.getName());
 
-        return response.hidWord();
+        model.addAttribute("Word", new Word());
+        return "word";
     }
 
     @PostMapping("/word")

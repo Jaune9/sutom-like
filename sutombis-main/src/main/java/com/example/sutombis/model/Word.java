@@ -12,6 +12,7 @@ public class Word {
     private String proposedWord;
     private String blurredWord;
     private String spacedWord;
+    private String hiddenWord;
 
     public String spaceWord(String wordToSpace) {
         // Add a space between each char
@@ -42,6 +43,7 @@ public class Word {
         // Hide unown letters + space letters
         String blurred = blurWord();
         String hidden = spaceWord(blurred);
+        this.hiddenWord = hidden;
         return hidden;
     }
 
@@ -59,7 +61,6 @@ public class Word {
 
     public void setName(String name) {
         this.name = name;
-        this.wordToFind = name;
     }
 
     public String getCategorie() {
@@ -108,6 +109,14 @@ public class Word {
 
     public void setFoundLetters(Set<Character> foundLetters) {
         this.foundLetters = foundLetters;
+    }
+
+    public String getHiddenWord() {
+        return hiddenWord;
+    }
+
+    public void setHiddenWord(String hiddenWord) {
+        this.hiddenWord = hiddenWord;
     }
 
 }
