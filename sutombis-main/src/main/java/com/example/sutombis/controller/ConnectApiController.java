@@ -1,12 +1,13 @@
 package com.example.sutombis.controller;
 
-import com.example.sutombis.model.Word;
-
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.example.sutombis.model.Word;
 
 @RestController
 public class ConnectApiController {
@@ -16,13 +17,18 @@ public class ConnectApiController {
     public String getRandomWord(Model model) {
         String url = "https://trouve-mot.fr/api";
         RestTemplate restTemplate = new RestTemplate();
-        
+
         Word response = restTemplate.getForObject(url + "/daily", Word.class);
-        
+
         String daily_word = response.getName();
-        String hidden_word = response.blurWord(daily_word);
-    
-        return response.spaceWord(hidden_word);
+        response.setWordToFind(daily_word);
+
+        return response.hidWord();
     }
 
+    @PostMapping("/word")
+    public String submitWord(@ModelAttribute Word Word, Model model) {
+        model.addAttribute("Word", Word);
+        return "word";
+    }
 }

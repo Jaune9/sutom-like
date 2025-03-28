@@ -8,6 +8,8 @@
 	<h1>Word</h1>
     <form action="#" th:action="@{/word}" th:object="${Word}" method="post">
     	<p>Word: <input type="text" th:field="*{word}" /></p>
+         <!-- <input type="text" id="name" name="name" th:maxlength="${maxLength}" required />
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span> -->
     </form>
 </body>
 </html>
